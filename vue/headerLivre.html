@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>MVC-Ajout de livre</title>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+</head>
+<script LANGUAGE="javascript">
+    $(document).ready(function() { 
+        $(".add_livre").submit(function(){  
+            $.post($(this).attr("action"), $(this).serialize(), function(data){
+                var $e = $("#messagee");
+                // traitement  exécuter une fois le formulaire posté.
+                //data est sous la forme: ok - idsession (voir verifController.php)
+                $e.text(data).show();
+                /*var ok=data.substr(0,2);
+                var token=data.substr(3,data.length);
+                if(ok!="erreur"){
+                    $(location).attr('href',"index.php?action=accueil&id="+token);
+                }
+                else
+                    $e.text(data).show();*/
+            });
+            return false;
+        });
+    });
+</script> 
+<body>
